@@ -2,8 +2,7 @@ group 'com.gpagers'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-apply plugin: 'checkstyle'
-apply plugin: 'findbugs'
+apply plugin: 'project-report'
 
 sourceCompatibility = 1.8
 
@@ -15,26 +14,17 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-core:2.8.6"
     compile "com.fasterxml.jackson.core:jackson-databind:2.8.6"
     compile "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.8.6"
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.testng:testng:6.11'
+
 
 }
 
-javadoc {
-    options {
-        encoding "UTF-8"
-        charSet 'UTF-8'
-        author true
-        version true
+test {
+    useTestNG() {
+        reports.html.enabled = false
+        reports.junitXml.enabled = true
     }
 }
-
-apply plugin: "jacoco"
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        csv.enabled false
-    }
-}
-
 
 

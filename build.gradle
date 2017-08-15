@@ -27,4 +27,6 @@ test {
     }
 }
 
+apply plugin: 'ear'
+
 

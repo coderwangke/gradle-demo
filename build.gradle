@@ -29,4 +29,10 @@ test {
 
 apply plugin: 'ear'
 
-allprojects { apply plugin: 'findbugs' }
+allprojects {
+    apply plugin: 'java'
+    test {
+        reports.html.enabled = false
+        reports.junitXml.enabled= true
+    }
+}
